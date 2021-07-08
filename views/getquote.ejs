@@ -1,0 +1,59 @@
+
+  <link rel="stylesheet" type="text/css" href="getquote.css">
+
+  <% layout('layouts/boilerplate')%> 
+    <div class="col">
+        <% if (welcome.length) { %> 
+    <div class="alert alert-success" role="alert">
+     <%= welcome %> 
+    </div>
+  </div>
+  <% } %> 
+        <div id="login">
+            <div class="container">
+                <div id="login-row" class="row justify-content-center align-items-center">
+                    <div id="login-column" class="col-md-8">
+                        <div id="login-box" class="col-md-12">
+                            <form id="login-form" class="form" action="/getquote" method="post" novalidate >
+                                <h3 class="text-center text-muted">Get Quote</h3>
+                                <div class="form-group col-10">
+                                    <label for="gallonsQuantity" class="text-muted">Gallons:</label><br>
+                                    <input type="text" name="history[gallonsQuantity]" id="gallonsQuantity" class="form-control col-6" required onkeyup="checkGallons()" >
+                                    <span id='message'></span>
+                                <fieldset disabled>
+                                    <label for="deliveryAddress" class="text-muted" >Address:</label><br>
+                                    <input type="text" name="deliveryAddress" id="deliveryAddress" class="form-control "  value="<%= currentUser.address1 %>, <%= currentUser.zipcode %>, <%= currentUser.state %> " >
+                                </fieldset>
+                                </div>
+                                <div class="form-group">    
+                                    <div class="form-group col-6  ">                             
+                                        <label for="startDate" class="text-muted ">Delivery Date:</label> <br>
+                                        <input type="date" id="startDate" class="form-control" name="history[date]"  max="20" required>
+                                    </div>
+
+                                        <div class="form-group col-6">
+                                            <label for="pricePerGallon" class="text-muted  ">Price: $/Gallon</label>
+                                            <input id="pricePerGallon"  type="text"  class="form-control" name="history[pricePerGallon]" readonly> 
+                                        </div>
+                                        <div class="form-group col-6">
+                                          <label for="totalPrice" class="text-muted" >Total: $</label>
+                                          <input id="totalPrice" type="text" class="form-control" name="history[totalPrice]" readonly >
+                                        </div>
+                                    </fieldset>
+                                <div class="form-group col-6">
+                                    <input type="submit" name="submit" class="btn btn-success btn-md" value="Submit"  id="submit" >
+                                    <input type="button" name="getquote"  class="btn btn-info btn-md " value="Get Quote"  id="getquote" onclick="submission()" >
+                                    
+                                </div>
+
+                            </form>
+                            <div class="float-right "> <a href="/home" class="link-danger" id= "CancelLink">Cancel</a></div>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </div> 
+        <script src="./getquote.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+
+  <% layout('layouts/boilerplate')%> 
+  
+    <div class="bg-image " style="
+    background-image: url('https://cdn.pixabay.com/photo/2016/11/19/15/12/filling-station-1839760_960_720.jpg');
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+  ">
+    <% if(!goodBye.length==0) { %> 
+      <div class="col">
+        <div class="alert alert-success" role="alert">
+        <%= goodBye %> 
+        </div>
+      </div>
+      <% } %>
+<div class="mask" style="background-color: rgba(0, 0, 0, 0);">
+  <div class="d-flex justify-content-center align-items-center h-00">
+    <h2 class="text-white mb-0"> Welcome to the gas price estimator. To have an estimation <br><br> click the on <a class="text-muted" href="/getquote">Get quote</a></h2>
+  </div>
+</div>
+</div>
+ </body>
+</html>

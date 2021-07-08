@@ -1,0 +1,27 @@
+<% layout('layouts/boilerplate')%> 
+<br> <br> <br><br><br>
+
+<div class="container d-flex justify-content-center">
+    <div class="col-8 ">
+        <table class="table table-dark table-sm">
+        <thead>
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Gallons</th>
+            <th scope="col">Gallon Price</th>
+            <th scope="col">Total Price</th>
+        </tr>
+        </thead>
+        <% for (let record of records){%>
+        <tbody>
+        <tr>
+            <td><%= record.date%> </td>
+            <td><%= record.gallonsQuantity%> </td>
+            <td><%= record.pricePerGallon%> $ </td>
+            <td><%= record.totalPrice%> $ </td>
+        </tr>
+        </tbody>
+        <% } %> 
+    </table>
+    </div>    
+</div>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gas Price Estimator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel = "icon" href = "https://image.freepik.com/free-icon/fuel-station-logo_318-9138.jpg"  type = "image/x-icon">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="home.css">
+</head>
+<body>
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark ">
+    <a class="navbar-brand " href="/home">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/getquote">Get quote</a>
+        </li>
+      </ul>
+      <ul class="nav justify-content-end">
+      <% if(!currentUser) { %> 
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/registration">Register</a>
+        </li>
+        <% } else { %> 
+        <li class="nav-item">
+          <a class="nav-link text-white  " href="/logout">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  text-white " href="/records"> Orders</a>
+        </li>
+
+        <% } %> 
+      </ul>
+    </div>
+  </nav>
+  <%- body %> 
