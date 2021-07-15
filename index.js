@@ -12,6 +12,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport')
 const LocalStrategy = require('passport-local');
+var authentication = require('passport-local-authenticate');
 
 
 mongoose.connect('mongodb://localhost:27017/user', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true,useFindAndModify:false })
@@ -150,6 +151,32 @@ app.post('/signup',wrapAsync(async (req,res)=>{
 app.get('/home', (req, res) => {
     res.render('home')
 })
+
+app.get('/passwordreset',(req,res)=>{
+    res.render('passwordreset')
+})
+
+app.put('/passwordreset', wrapAsync(async(req,res)=>{
+    const user= await User.findOne ( {username:req.body.username})
+    if ( user && user.secretkey==req.body.secretkey){
+    User.findByUsername(user.username).then(function(sanitizedUser) {
+        if (sanitizedUser) {
+            sanitizedUser.setPassword(req.body.newpassword, function() {
+                sanitizedUser.save();
+                req.flash('success'," Your password was successfully reset!!")
+                res.redirect('/login')
+            });
+        } 
+    }, function(err) {
+        console.error(err);
+    })
+}  
+else {
+        req.flash('error'," Your username or secret key is not correct try again!!")
+        res.redirect('/passwordreset')
+}   
+}))
+
 
 app.get('/records',isLoggedIn, wrapAsync(async(req,res)=>{
     const user = await User.findOne({username:res.locals.currentUser.username}).populate('histories');

@@ -10,6 +10,10 @@ const userDataSchema=new schema({
         
     },
 
+    secretkey:{
+        type : String,
+    },
+
     address1:{
         type:String,
     },

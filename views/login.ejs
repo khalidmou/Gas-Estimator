@@ -7,6 +7,13 @@
         </div>
       </div>
         <% } %>
+        <% if( success.length) {%>
+            <div class="col">
+            <div class="alert alert-success" role="alert">
+              <%= success %> 
+            </div>
+          </div>
+            <% } %>
         <div id="login">
             <div class="container">
                 <div id="login-row" class="row justify-content-center align-items-center">
@@ -27,8 +34,9 @@
                                     <input type="submit" name="submit" class="btn btn-info btn-md" value="sign in ">
                                 </div>
                                 <div id="register-link" class="text-right">
-                                    <a href="/registration" class="text-muted">Register here</a>
+                                    <a href="/passwordreset" class="text-muted">Forget Password</a>
                                 </div>
+                                
 
                             </form>
                         </div>
